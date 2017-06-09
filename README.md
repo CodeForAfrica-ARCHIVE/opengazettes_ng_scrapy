@@ -9,12 +9,12 @@ $ git clone https://github.com/CodeForAfrica-SCRAPERS/opengazettes_ng_scrapy.git
 
 Install the requirements from the `requirements.txt` file:
 ```
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 Crawl Nigerian gazettes for a specific year by running:
 ```
-scrapy crawl ng_gazettes -a year=1971
+$ scrapy crawl ng_gazettes -a year=1971
 ```
 At the time of writing, the years with gazettes available are years:
 `1957-1964` , `1967-1971`, and `1973-1974`
