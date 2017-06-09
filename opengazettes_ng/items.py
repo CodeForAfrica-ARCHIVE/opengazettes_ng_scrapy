@@ -8,7 +8,13 @@
 import scrapy
 
 
-class OpengazzetesNgItem(scrapy.Item):
-    # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+class OpengazettesNgItem(scrapy.Item):
+    gazette_link = scrapy.Field()
+    publication_date = scrapy.Field()
+    gazette_number = scrapy.Field()
+    gazette_volume = scrapy.Field()
+    files = scrapy.Field()
+    special_issue = scrapy.Field()
+    file_urls = scrapy.Field()
+    filename = scrapy.Field()
+    gazette_title = scrapy.Field()

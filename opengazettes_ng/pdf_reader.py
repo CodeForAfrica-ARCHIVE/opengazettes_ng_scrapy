@@ -41,16 +41,20 @@ def parse_pdf(url):
         interpreter.process_page(page)
         text = retstr.getvalue()
 
-    vol = get_no(text)
+    vol = get_vol(text)
     no = get_no(text)
     return vol, no
 
 
 def get_vol(data):
-    vol = re.search("\W(n\s*o\s*\.?\s*[0-9,\s*]+)", data, re.IGNORECASE)
-    return vol
+    vol = re.search("\W(v\s*o\s*l\s*\.?\s*[0-9]+)", data, re.IGNORECASE)
+    if vol:
+        return ''.join([num for num in vol.group() if num.isdigit()])
+    return 'nf'
 
 
 def get_no(data):
-    no = re.search("\W(v\s*o\s*l\s*\.?\s*[0-9,\s*]+)", data, re.IGNORECASE)
-    return no
+    no = re.search("\W(n\s*o\s*\.?\s*[0-9]+)", data, re.IGNORECASE)
+    if no:
+        return ''.join([num for num in no.group() if num.isdigit()])
+    return 'nf'
