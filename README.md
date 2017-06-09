@@ -1,7 +1,7 @@
 # Opengazettes Nigeria Scraper
 [SCRAPY] Nigerian Gazettes obtained from the Centre for Research Libraries Global Resources Network (https://dds.crl.edu/crldelivery/27040)
 
-# Getting Started
+## Getting Started
 Clone this repo by running:
 ```
 $ git clone https://github.com/CodeForAfrica-SCRAPERS/opengazettes_ng_scrapy.git
