@@ -20,4 +20,4 @@ At the time of writing, the years with gazettes available are years:
 `1957-1964` , `1967-1971`, and `1973-1974`
 
 Here's a screenshot showing what the scraper does. 
-![Nigeria Gazette Scraper](https://lh5.googleusercontent.com/IWxSjBgcqBslv2fHKM-DFjvA_URBlhuOIbEHgDNyArPuWAaxQ4OoHKdJcX7zDTIa0nuXLtB7Me15u2c=w2402-h1188-rw)
+![Nigeria Gazette Scraper](http://i.imgur.com/MX0psYu.jpg)
