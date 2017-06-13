@@ -11,12 +11,15 @@
 
 BOT_NAME = 'opengazettes_ng'
 
+# FEED_URI = '/tmp/export.jl'
+
 SPIDER_MODULES = ['opengazettes_ng.spiders']
 NEWSPIDER_MODULE = 'opengazettes_ng.spiders'
-
+FILES_STORE_S3_ACL = 'public-read'
+DELTAFETCH_ENABLED = True
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-# USER_AGENT = 'opengazettes_ng (+http://www.yourdomain.com)'
+USER_AGENT = 'opengazettes_ng (+http://www.opengazettes.ng)'
 
 # Obey robots.txt rules
 # Since the dds.crl.edu site disallows all agents. Disobedience is required to
@@ -30,7 +33,7 @@ ROBOTSTXT_OBEY = False
 # Configure a delay for requests for the same website (default: 0)
 # See http://scrapy.readthedocs.org/en/latest/topics/settings.html#download-delay
 # See also autothrottle settings and docs
-# DOWNLOAD_DELAY = 3
+DOWNLOAD_DELAY = 3
 # The download delay setting will honor only one of:
 # CONCURRENT_REQUESTS_PER_DOMAIN = 16
 # CONCURRENT_REQUESTS_PER_IP = 16
@@ -53,6 +56,9 @@ ROBOTSTXT_OBEY = False
 #    'opengazettes_ng.middlewares.OpengazettesNgSpiderMiddleware': 543,
 # }
 
+SPIDER_MIDDLEWARES = {
+   'scrapy_deltafetch.DeltaFetch': True,
+}
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 # DOWNLOADER_MIDDLEWARES = {
@@ -67,13 +73,17 @@ ROBOTSTXT_OBEY = False
 
 # Configure item pipelines
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'opengazettes_ng.pipelines.OpengazettesNgPipeline': 300,
-# }
+ITEM_PIPELINES = {
+   'opengazettes_ng.pipelines.OpengazettesNgPipeline': 300,
+}
+
+FEED_STORAGES = {
+   's3': 'opengazettes_ng.extensions.feedexport.S3FeedStorage'
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See http://doc.scrapy.org/en/latest/topics/autothrottle.html
-# AUTOTHROTTLE_ENABLED = True
+AUTOTHROTTLE_ENABLED = True
 # The initial download delay
 # AUTOTHROTTLE_START_DELAY = 5
 # The maximum download delay to be set in case of high latencies
