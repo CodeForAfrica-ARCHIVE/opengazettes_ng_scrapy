@@ -29,11 +29,6 @@ class OpengazettesNgPipeline(FilesPipeline):
             )
             raise FileException('download-error')
 
-        # buf = BytesIO(response.body)
-        # # Tag files that have errors in them
-        # has_error = True if 'A PHP Error was encountered'\
-        #     in buf.read() else False
-
         if not response.body:
             logger.warning(
                 'File (empty-content): Empty file from %(request)s referred '

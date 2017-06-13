@@ -10,6 +10,14 @@ import re
 
 
 def parse_pdf(url):
+    """
+    Downloads the pdf from the given url, reads it and obtains the vol and no
+    values
+    :param url: URL from where to download the pdf
+    :type url: string
+    :return:
+    :rtype:
+    """
     pdf_data = urllib2.urlopen(Request(url)).read()
     # Cast to StringIO object
     from StringIO import StringIO
@@ -47,14 +55,25 @@ def parse_pdf(url):
 
 
 def get_vol(data):
-    vol = re.search("\W(v\s*o\s*l\s*\.?\s*[^a-zA-Z\n,]+)", data, re.IGNORECASE)
-    if vol:
+    """ Get Vol (Volume) value from data """
+    vol = re.search("[^a-zA-Z](v\s*o\s*l\s*\.?\s*[^a-zA-Z\n,]+)",
+                    data, re.IGNORECASE)
+    # Check if the search result contains at least a digit
+    if has_num(vol.group()):
         return ''.join([num for num in vol.group() if num.isdigit()])
     return '(nf)'
 
 
 def get_no(data):
-    no = re.search("\W(n\s*o\s*\.?\s*[^a-zA-Z\n,]+)", data, re.IGNORECASE)
-    if no:
+    """ Get No (Number) value from data """
+    no = re.search("[^a-zA-Z](n\s*o\s*\.?\s*[^a-zA-Z\n,]+)",
+                   data, re.IGNORECASE)
+    # Check if the search result contains at least a digit
+    if has_num(no.group()):
         return ''.join([num for num in no.group() if num.isdigit()])
     return '(nf)'
+
+
+def has_num(text):
+    """ Check if the string contains a digit """
+    return any(str.isdigit(c) for c in text)
