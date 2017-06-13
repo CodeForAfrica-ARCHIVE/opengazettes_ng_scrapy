@@ -17,7 +17,6 @@ logger = logging.getLogger(__name__)
 class OpengazettesNgPipeline(FilesPipeline):
 
     def media_downloaded(self, response, request, info):
-        print("\n\n\nMedia Downloaded!! ", info)
         referer = referer_str(request)
 
         if response.status != 200:
@@ -30,7 +29,7 @@ class OpengazettesNgPipeline(FilesPipeline):
             )
             raise FileException('download-error')
 
-        buf = BytesIO(response.body)
+        # buf = BytesIO(response.body)
         # # Tag files that have errors in them
         # has_error = True if 'A PHP Error was encountered'\
         #     in buf.read() else False
@@ -76,13 +75,11 @@ class OpengazettesNgPipeline(FilesPipeline):
         return {'url': request.url, 'path': path, 'checksum': checksum}
 
     def get_media_requests(self, item, info):
-        print("\n\n\nGet media requests!! ", info)
         return [Request(x, meta={'filename': item["filename"],
                 'publication_date': item["publication_date"]})
                 for x in item.get(self.files_urls_field, [])]
 
     def file_path(self, request, response=None, info=None):
-        print("\n\n\nGetting the filepath ", info)
         # start of deprecation warning block (can be removed in the future)
         def _warn():
             from scrapy.exceptions import ScrapyDeprecationWarning

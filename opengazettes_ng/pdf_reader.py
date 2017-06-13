@@ -47,14 +47,14 @@ def parse_pdf(url):
 
 
 def get_vol(data):
-    vol = re.search("\W(v\s*o\s*l\s*\.?\s*[^a-zA-Z\n]+)", data, re.IGNORECASE)
+    vol = re.search("\W(v\s*o\s*l\s*\.?\s*[^a-zA-Z\n,]+)", data, re.IGNORECASE)
     if vol:
         return ''.join([num for num in vol.group() if num.isdigit()])
     return '(nf)'
 
 
 def get_no(data):
-    no = re.search("\W(n\s*o\s*\.?\s*[^a-zA-Z\n]+)", data, re.IGNORECASE)
+    no = re.search("\W(n\s*o\s*\.?\s*[^a-zA-Z\n,]+)", data, re.IGNORECASE)
     if no:
         return ''.join([num for num in no.group() if num.isdigit()])
     return '(nf)'
