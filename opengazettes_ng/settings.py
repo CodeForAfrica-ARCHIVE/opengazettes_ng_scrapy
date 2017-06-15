@@ -56,9 +56,9 @@ DOWNLOAD_DELAY = 3
 #    'opengazettes_ng.middlewares.OpengazettesNgSpiderMiddleware': 543,
 # }
 
-# SPIDER_MIDDLEWARES = {
-#    'scrapy_deltafetch.DeltaFetch': True,
-# }
+SPIDER_MIDDLEWARES = {
+   'scrapy_deltafetch.DeltaFetch': True,
+}
 # Enable or disable downloader middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/downloader-middleware.html
 # DOWNLOADER_MIDDLEWARES = {
