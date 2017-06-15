@@ -101,5 +101,5 @@ ENV/
 .mypy_cache/
 
 .DS_Store
-
-files/
+/files/
+/scrapinghub_raw_settings.txt
