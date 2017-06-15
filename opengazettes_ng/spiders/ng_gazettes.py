@@ -68,8 +68,8 @@ class GazetteSpider(scrapy.Spider):
         return ''
 
     def create_filename(self, gazette, vol, no, date):
-        filename = 'opengazettes-ng-vol-%s-no-%s %s-dated-%s-%s-%s' % \
-            (vol, no, self.get_special_name(gazette),
+        filename = 'opengazettes-ng-vol-%s-no-%s%s-dated-%s-%s-%s' % \
+            (vol, no, self.format_special_name(gazette),
              date.strftime("%d"),
              date.strftime("%B"),
              date.strftime("%Y"))
@@ -77,11 +77,13 @@ class GazetteSpider(scrapy.Spider):
 
     def create_title(self, gazette, vol, no, date):
         # Add space if gazette is special
-        special_name = self.get_special_name(gazette)
-        space = " " if special_name else ""
-        special_name = space + special_name
         return 'Nigeria Government Gazette Vol %s No %s%s Dated %s %s %s' % \
-               (vol, no, special_name,
+               (vol, no, self.format_special_name(gazette),
                 date.strftime("%d"),
                 date.strftime("%B"),
                 date.strftime("%Y"))
+
+    def format_special_name(self, gazette):
+        special_name = self.get_special_name(gazette)
+        space = " " if special_name else ""
+        return space + special_name

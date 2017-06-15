@@ -59,8 +59,9 @@ def get_vol(data):
     vol = re.search("[^a-zA-Z](v\s*o\s*l\s*\.?\s*[^a-zA-Z\n,]+)",
                     data, re.IGNORECASE)
     # Check if the search result contains at least a digit
-    if has_num(vol.group()):
-        return ''.join([num for num in vol.group() if num.isdigit()])
+    if vol:
+        if has_num(vol.group()):
+            return ''.join([num for num in vol.group() if num.isdigit()])
     return '(nf)'
 
 
@@ -69,8 +70,9 @@ def get_no(data):
     no = re.search("[^a-zA-Z](n\s*o\s*\.?\s*[^a-zA-Z\n,]+)",
                    data, re.IGNORECASE)
     # Check if the search result contains at least a digit
-    if has_num(no.group()):
-        return ''.join([num for num in no.group() if num.isdigit()])
+    if no:
+        if has_num(no.group()):
+            return ''.join([num for num in no.group() if num.isdigit()])
     return '(nf)'
 
 
