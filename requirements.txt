@@ -1,6 +1,7 @@
 asn1crypto==0.22.0
 attrs==17.2.0
 Automat==0.6.0
+bsddb3==6.2.4
 certifi==2017.4.17
 cffi==1.10.0
 chardet==3.0.4
@@ -28,6 +29,7 @@ requests==2.17.3
 ruamel.ordereddict==0.4.9
 ruamel.yaml==0.15.5
 Scrapy==1.4.0
+scrapy-deltafetch==1.2.1
 service-identity==17.0.0
 six==1.10.0
 Twisted==17.1.0

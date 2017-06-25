@@ -19,7 +19,7 @@ FILES_STORE_S3_ACL = 'public-read'
 DELTAFETCH_ENABLED = True
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-USER_AGENT = 'opengazettes_ng (+http://www.opengazettes.ng)'
+USER_AGENT = 'OpenGazettes/Nigeria (+https://opengazettes.co)'
 
 # Obey robots.txt rules
 # Since the dds.crl.edu site disallows all agents. Disobedience is required to
